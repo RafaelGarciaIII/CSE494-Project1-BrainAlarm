@@ -23,6 +23,9 @@
 //string representation of the math problem, can send to a label directly
 -(NSString*)ToString;
 
+//used to get value for hint
+-(int)returnAnswer;
+
 //custom constructor / init method
 -(instancetype)initGenerateProblem;
 

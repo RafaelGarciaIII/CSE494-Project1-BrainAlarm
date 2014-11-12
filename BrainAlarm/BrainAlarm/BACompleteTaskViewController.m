@@ -27,6 +27,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *warningLabel;
 @property (weak, nonatomic) IBOutlet UIButton *mathCheckAnswerButton;
 - (IBAction)checkAnswer:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *HintTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *HintLabel;
+
 
 @property (strong, nonatomic) AVAudioPlayer *click;
 @end
@@ -73,11 +76,20 @@ NSTimer *infoUpdater;
         self.mathCheckAnswerButton.enabled = NO;
         self.mathCheckAnswerText.hidden = YES;
         self.mathCheckAnswerText.enabled = NO;
+        self.HintTextLabel.hidden = YES;
+        self.HintLabel.text = @"Make sure you bend your knees.";
     }
     //Math task
     else
     {
+        self.HintTextLabel.hidden = NO;
         self.mathTask = [[BAMathProblem alloc] initGenerateProblem];
+        int answer = self.mathTask.returnAnswer;
+        //NSString *stringAnswer = [NSString stringWithFormat:@"%d",answer];
+        int upperLimit = answer * 1.2;
+        int lowerLimit = answer *.8;
+        NSString *hintText = [NSString stringWithFormat:@"%d and %d",lowerLimit,upperLimit];
+        self.HintLabel.text = hintText;
         self.taskType = 1;
         self.taskLabel.text = @"Do the problem!";
         

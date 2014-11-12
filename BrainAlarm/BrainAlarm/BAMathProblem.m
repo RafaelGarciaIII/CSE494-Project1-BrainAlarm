@@ -30,6 +30,11 @@
     return result;
 }
 
+-(int)returnAnswer
+{
+    return self.answer;
+}
+
 
 //constructor
 -(instancetype) initGenerateProblem
